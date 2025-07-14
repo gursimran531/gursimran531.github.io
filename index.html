@@ -37,6 +37,35 @@
             background-color: #2d3748; /* Even darker gray for footer */
             color: #cbd5e0;
         }
+        .project-category-container {
+            background-color: #e2e8f0; /* Light gray for category background */
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .collapsible-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none; /* Prevent text selection on double click */
+            margin-bottom: 1rem; /* Space between header and content */
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        .arrow-icon.rotated {
+            transform: rotate(90deg);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .collapsible-content.expanded {
+            max-height: 2000px; /* A large enough value to accommodate all projects */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -95,72 +124,118 @@
     <section id="projects" class="py-16 bg-gray-100">
         <div class="container mx-auto px-6">
             <h3 class="text-4xl font-bold text-center mb-12">My Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Project Card 1: Set Up a Web App Using AWS and VS Code -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Set Up a Web App Using AWS and VS Code</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project involved launching an EC2 instance, setting up VS Code with Remote - SSH, and building a basic Java web app using Maven. It focused on secure remote access and streamlined development workflows.
-                    </p>
-                    <a href="./legendary-aws-devops-vscode.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+            <!-- Amazon Lex Projects Folder -->
+            <div class="project-category-container">
+                <div id="lex-header" class="collapsible-header">
+                    <h3 class="text-3xl font-bold text-center mb-8 pr-4">Amazon Lex Projects</h3>
+                    <svg id="lex-arrow-icon" class="arrow-icon w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
-
-                <!-- Project Card 2: Connect a GitHub Repo with AWS -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Connect a GitHub Repo with AWS</h4>
-                    <p class="text-gray-700 mb-4">
-                        In this project, I set up Git and GitHub to manage a web app project. It covered connecting a local project to a remote repository, tracking changes, and pushing code updates securely using GitHub Personal Access Tokens.
-                    </p>
-                    <a href="./legendary-aws-devops-github.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                <div id="lex-content" class="collapsible-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Project Card: Build a Chatbot with Amazon Lex -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Build a Chatbot with Amazon Lex</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project demonstrates building an intelligent chatbot using Amazon Lex, focusing on natural language understanding, intent creation, and configuring FallbackIntent for robust conversational AI.
+                            </p>
+                            <a href="./legendary-aws-ai-lex1.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Project Card 3: Secure Packages with CodeArtifact -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Secure Packages with CodeArtifact</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project demonstrates using AWS CodeArtifact to manage project dependencies securely. It covers connecting a web app to CodeArtifact using IAM roles and integrating Maven with a private repository.
-                    </p>
-                    <a href="./legendary-aws-devops-codeartifact-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
-                </div>
-
-                <!-- Project Card 4: Continuous Integration with CodeBuild -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Continuous Integration with CodeBuild</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project focuses on creating and configuring an AWS CodeBuild project from scratch, automating builds, integrating GitHub, defining build steps with `buildspec.yml`, and running automated tests for CI/CD.
-                    </p>
-                    <a href="./legendary-aws-devops-codebuild-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
-                </div>
-
-                <!-- Project Card 5: Deploy a Web App with CodeDeploy -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Deploy a Web App with CodeDeploy</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project demonstrates deploying a web application using AWS CodeDeploy and setting up infrastructure with CloudFormation, focusing on automation, streamlined deployment, and rollback strategies.
-                    </p>
-                    <a href="./legendary-aws-devops-codedeploy-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
-                </div>
-
-                <!-- Project Card 6: Infrastructure as Code with CloudFormation -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Infrastructure as Code with CloudFormation</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project demonstrates setting up a comprehensive AWS architecture using CloudFormation, leveraging Infrastructure as Code (IaC) principles to define and provision a CI/CD pipeline.
-                    </p>
-                    <a href="./Infrastructure as Code with CloudFormation document.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
-                </div>
-
-                <!-- Project Card 7: Build a CI/CD Pipeline with AWS CodePipeline -->
-                <div class="project-card rounded-lg shadow-lg p-6">
-                    <h4 class="text-2xl font-semibold mb-4">Build a CI/CD Pipeline with AWS CodePipeline</h4>
-                    <p class="text-gray-700 mb-4">
-                        This project focuses on building a fully automated CI/CD pipeline using AWS CodePipeline, integrating source control, build, and deployment stages for continuous delivery.
-                    </p>
-                    <a href="./legendary-aws-devops-codepipeline-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
-                </div>
-
             </div>
+
+            <!-- CI/CD Pipeline Projects Folder -->
+            <div class="project-category-container">
+                <div id="cicd-header" class="collapsible-header">
+                    <h3 class="text-3xl font-bold text-center mb-8 pr-4">CI/CD Pipeline Projects</h3>
+                    <svg id="cicd-arrow-icon" class="arrow-icon w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <div id="cicd-content" class="collapsible-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                        <!-- Project Card 1: Set Up a Web App Using AWS and VS Code -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Set Up a Web App Using AWS and VS Code</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project involved launching an EC2 instance, setting up VS Code with Remote - SSH, and building a basic Java web app using Maven. It focused on secure remote access and streamlined development workflows.
+                            </p>
+                            <a href="./legendary-aws-devops-vscode.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 2: Connect a GitHub Repo with AWS -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Connect a GitHub Repo with AWS</h4>
+                            <p class="text-gray-700 mb-4">
+                                In this project, I set up Git and GitHub to manage a web app project. It covered connecting a local project to a remote repository, tracking changes, and pushing code updates securely using GitHub Personal Access Tokens.
+                            </p>
+                            <a href="./legendary-aws-devops-github.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 3: Secure Packages with CodeArtifact -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Secure Packages with CodeArtifact</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project demonstrates using AWS CodeArtifact to manage project dependencies securely. It covers connecting a web app to CodeArtifact using IAM roles and integrating Maven with a private repository.
+                            </p>
+                            <a href="./legendary-aws-devops-codeartifact-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 4: Continuous Integration with CodeBuild -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Continuous Integration with CodeBuild</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project focuses on creating and configuring an AWS CodeBuild project from scratch, automating builds, integrating GitHub, defining build steps with `buildspec.yml`, and running automated tests for CI/CD.
+                            </p>
+                            <a href="./legendary-aws-devops-codebuild-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 5: Deploy a Web App with CodeDeploy -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Deploy a Web App with CodeDeploy</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project demonstrates deploying a web application using AWS CodeDeploy and setting up infrastructure with CloudFormation, focusing on automation, streamlined deployment, and rollback strategies.
+                            </p>
+                            <a href="./legendary-aws-devops-codedeploy-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 6: Infrastructure as Code with CloudFormation -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Infrastructure as Code with CloudFormation</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project demonstrates setting up a comprehensive AWS architecture using CloudFormation, leveraging Infrastructure as Code (IaC) principles to define and provision a CI/CD pipeline.
+                            </p>
+                            <a href="./Infrastructure as Code with CloudFormation document.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                        <!-- Project Card 7: Build a CI/CD Pipeline with AWS CodePipeline -->
+                        <div class="project-card rounded-lg shadow-lg p-6">
+                            <h4 class="text-2xl font-semibold mb-4">Build a CI/CD Pipeline with AWS CodePipeline</h4>
+                            <p class="text-gray-700 mb-4">
+                                This project focuses on building a fully automated CI/CD pipeline using AWS CodePipeline, integrating source control, build, and deployment stages for continuous delivery.
+                            </p>
+                            <a href="./legendary-aws-devops-codepipeline-updated.pdf" target="_blank" class="btn-primary text-sm font-semibold">View Project PDF</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon! card (outside any specific folder) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+                <div class="project-card rounded-lg shadow-lg p-6">
+                    <h4 class="text-2xl font-semibold mb-4">Coming Soon!</h4>
+                    <p class="text-gray-700 mb-4">
+                        Stay tuned for more exciting projects showcasing my skills in DevOps and Cloud Engineering!
+                    </p>
+                    <button class="btn-primary text-sm font-semibold opacity-50 cursor-not-allowed">More Projects</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -174,7 +249,7 @@
             <div class="flex justify-center space-x-6">
                 <a href="mailto:gursimran2002singh@gmail.com" class="btn-primary text-lg font-semibold">Email Me</a>
                 <a href="https://github.com/gursimran531" target="_blank" class="btn-primary text-lg font-semibold">GitHub Profile</a>
-                <!-- Add LinkedIn or other social links here -->
+                <a href="https://www.linkedin.com/in/gursimran-singh-269ba5224" target="_blank" class="btn-primary text-lg font-semibold">LinkedIn Profile</a>
             </div>
         </div>
     </section>
@@ -185,6 +260,38 @@
             <p>&copy; 2025 Gursimran Singh. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // CI/CD Projects Collapsible
+            const cicdHeader = document.getElementById('cicd-header');
+            const cicdContent = document.getElementById('cicd-content');
+            const cicdArrowIcon = document.getElementById('cicd-arrow-icon');
+
+            // Initially hide CI/CD content
+            cicdContent.classList.remove('expanded');
+            cicdArrowIcon.classList.remove('rotated');
+
+            cicdHeader.addEventListener('click', function() {
+                cicdContent.classList.toggle('expanded');
+                cicdArrowIcon.classList.toggle('rotated');
+            });
+
+            // Amazon Lex Projects Collapsible
+            const lexHeader = document.getElementById('lex-header');
+            const lexContent = document.getElementById('lex-content');
+            const lexArrowIcon = document.getElementById('lex-arrow-icon');
+
+            // Initially hide Amazon Lex content
+            lexContent.classList.remove('expanded');
+            lexArrowIcon.classList.remove('rotated');
+
+            lexHeader.addEventListener('click', function() {
+                lexContent.classList.toggle('expanded');
+                lexArrowIcon.classList.toggle('rotated');
+            });
+        });
+    </script>
 
 </body>
 </html>
